@@ -1,0 +1,42 @@
+name: CI file for pyhton App
+on:
+  pull_request:
+    branches:
+      - Feature-PROG8860-RAMAN
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Build Docker image
+      - name: Build Docker image
+        run: docker build -t rmn-p-app .
+
+      # Run Docker container
+      - name: Run Docker container
+        run: docker run -d -p 5000:5000 --name rmn-p-container rmn-p-app
+
+      # Stop Docker container
+      - name: Stop Docker container
+        run: docker stop rmn-p-container
+
+      # Remove Docker container
+      - name: Remove Docker container
+        run: docker rm rmn-p-container
