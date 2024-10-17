@@ -1,6 +1,7 @@
-name: CI file for pyhton App
+name: CI file for Python App
+
 on:
-  pull_request:
+  push:
     branches:
       - Feature-PROG8860-RAMAN
 
