@@ -3,7 +3,7 @@ name: CI file for Python App
 on:
   push:
     branches:
-      - Feature-PROG8860-RAMAN
+      - main
 
 jobs:
   build:
