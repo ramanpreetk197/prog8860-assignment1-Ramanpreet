@@ -39,4 +39,5 @@ jobs:
         run: docker stop rmn-p-container
 
       # Remove Docker container
+      - name: Remove Docker container
         run: docker rm rmn-p-container
