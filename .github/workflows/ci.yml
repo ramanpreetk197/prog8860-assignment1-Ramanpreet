@@ -1,4 +1,5 @@
-name: CI file for pyhton App
+name: CI file for Python App
+
 on:
   pull_request:
     branches:
@@ -38,5 +39,4 @@ jobs:
         run: docker stop rmn-p-container
 
       # Remove Docker container
-      - name: Remove Docker container
         run: docker rm rmn-p-container
